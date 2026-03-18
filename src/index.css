@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "VT323", monospace;
+  --font-mono: "Press Start 2P", monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: #000;
+    color: #d4d4d4;
+  }
+  body {
+    font-family: var(--font-sans);
+    font-size: 1.25rem;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    text-shadow: 3px 3px 0px #000;
+  }
+}
+
+@layer utilities {
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  /* Classic FF7/PS1 Blue Menu */
+  .ps1-menu {
+    background: linear-gradient(135deg, #000080 0%, #000020 100%);
+    border: 2px solid #b0b0b0;
+    border-radius: 4px;
+    box-shadow: inset 2px 2px 0px #ffffff, inset -2px -2px 0px #404040, 4px 4px 0px rgba(0,0,0,0.8);
+    color: #ffffff;
+    text-shadow: 2px 2px 0px #000000;
+  }
+
+  /* Chunky Gray PS1 Button */
+  .ps1-button {
+    background: #7a7a7a;
+    border: 2px solid #dfdfdf;
+    border-bottom-color: #2a2a2a;
+    border-right-color: #2a2a2a;
+    color: white;
+    text-shadow: 2px 2px 0px black;
+    box-shadow: 4px 4px 0px rgba(0,0,0,0.6);
+    transition: none;
+  }
+  
+  .ps1-button:active {
+    border: 2px solid #2a2a2a;
+    border-bottom-color: #dfdfdf;
+    border-right-color: #dfdfdf;
+    transform: translate(4px, 4px);
+    box-shadow: 0px 0px 0px rgba(0,0,0,0);
+  }
+
+  /* Memory Card / Save Block */
+  .ps1-block {
+    background-color: #1a1a1a;
+    border: 2px solid #4a4a4a;
+    box-shadow: inset 2px 2px 0px #000, 2px 2px 0px #3a3a3a;
+  }
+
+  .scanlines {
+    position: relative;
+  }
+  .scanlines::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+    z-index: 50;
+    background-size: 100% 4px;
+    pointer-events: none;
+  }
+}
